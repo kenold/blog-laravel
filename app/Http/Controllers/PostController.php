@@ -33,8 +33,13 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        dd($request->all());
+    {        
+
+        $this->validate($request, [
+            'title' => 'required|max',
+            'featured' => 'required|image',
+            'content' => 'required'
+        ]);
     }
 
     /**
