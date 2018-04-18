@@ -36,10 +36,12 @@ class PostController extends Controller
     {        
 
         $this->validate($request, [
-            'title' => 'required|max',
+            'title' => 'required',
             'featured' => 'required|image',
             'content' => 'required'
         ]);
+
+        dd($request->all());
     }
 
     /**
