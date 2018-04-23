@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Post;
+use Session;
 
 class PostController extends Controller
 {
@@ -46,6 +47,7 @@ class PostController extends Controller
 
         // rename and move image
         $featured = $request->featured;
+        // convert filename to lowercase
         $featured_new_name = strtolower(time()."-".$featured->getClientOriginalName());
         $featured->move('uploads/posts', $featured_new_name);
 
@@ -54,10 +56,12 @@ class PostController extends Controller
             'title' => $request->title,
             'content' => $request->content,
             'featured' => 'uploads/posts/'.$featured_new_name,
-            'category_id' => $request->cateagory_id
+            'category_id' => $request->category_id
         ]);
 
-        Session::flash('success', 'Post created successfully!');        
+        Session::flash('success', 'Post created successfully!'); 
+
+        return redirect()->back();       
 
     }
 
