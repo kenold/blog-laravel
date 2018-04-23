@@ -126,4 +126,29 @@ class PostController extends Controller
 
         return redirect()->back();
     }
+
+    /**
+     * display trashed posts
+     */
+    public function trashed()
+    {
+        $posts = Post::onlyTrashed()->get();
+
+        return view('admin.posts.trashed')->with('posts', $posts);
+    }
+
+    /**
+     * permanently display a post
+     */
+    public function kill($id)
+    {
+        $post = Post::withTrashed()->where('id', $id)->first();
+
+        $post->forceDelete();
+
+        Session::flash('success', 'Your post was deleted permanently!');
+
+        return redirect()->back();
+
+    }
 }
