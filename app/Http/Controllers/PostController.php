@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Category;
+use App\Post;
 
 class PostController extends Controller
 {
@@ -43,7 +44,21 @@ class PostController extends Controller
             'category_id' => 'required'
         ]);
 
-        dd($request->all());
+        // rename and move image
+        $featured = $request->featured;
+        $featured_new_name = strtolower(time()."-".$featured->getClientOriginalName());
+        $featured->move('uploads/posts', $featured_new_name);
+
+        // save fields
+        $post = Post::create([
+            'title' => $request->title,
+            'content' => $request->content,
+            'featured' => 'uploads/posts/'.$featured_new_name,
+            'category_id' => $request->cateagory_id
+        ]);
+
+        Session::flash('success', 'Post created successfully!');        
+
     }
 
     /**
