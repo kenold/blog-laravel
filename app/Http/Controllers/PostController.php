@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Post;
+use App\Tag;
 use Session;
 
 class PostController extends Controller
@@ -29,6 +30,7 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::all();
+        $tags = Tag::all();
 
         if($categories->count() == 0)
         {
@@ -36,7 +38,8 @@ class PostController extends Controller
             return redirect()->back();
         }
 
-        return view('admin.posts.create')->with('categories', $categories);
+        return view('admin.posts.create')->with('categories', $categories)
+                                        ->with('tags', $tags);
     }
 
     /**
@@ -46,8 +49,7 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {        
-
+    {                
         $this->validate($request, [
             'title' => 'required',
             'featured' => 'required|image',
@@ -70,6 +72,8 @@ class PostController extends Controller
             'featured' => 'uploads/posts/'.$featured_new_name,
             'category_id' => $request->category_id            
         ]);
+
+        $post->tags()->attach($request->tags);
 
         Session::flash('success', 'Post created successfully!'); 
 
