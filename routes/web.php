@@ -29,7 +29,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
         'as' => 'posts'
     ]);  
 
-    // create and store post
+    // create and store a post
     Route::get('/post/create', [
         'uses' => 'PostController@create',
         'as' => 'post.create'
@@ -38,6 +38,17 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     Route::post('/post/store', [
         'uses' => 'PostController@store',
         'as' => 'post.store'
+    ]);
+
+    // edit and update a post
+    Route::get('/post/edit/{id}', [
+        'uses' => 'PostController@edit',
+        'as' => 'post.edit'
+    ]);
+
+    Route::post('/post/update/{id}', [
+        'uses' => 'PostController@update',
+        'as' => 'post.update'
     ]);
 
     // trash post
@@ -56,6 +67,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     Route::get('/posts/kill/{id}', [
         'uses' => 'PostController@kill',
         'as' => 'post.kill'
+    ]);
+
+    // restore a post
+    Route::get('/posts/restore/{id}', [
+        'uses' => 'PostController@restore',
+        'as' => 'post.restore'
     ]);
 
     // Categories Routes
