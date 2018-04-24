@@ -16,7 +16,7 @@
                         <tr>
                             <td><img src="{{ $post->featured }}" alt="{{ $post->title }}" height="50px"></td>
                             <td>{{ $post->title }}</td>
-                            <td><a href="">Edit</a></td>
+                            <td><a href="{{ route('post.edit', ['id' => $post->id]) }}">Edit</a></td>
                             <td><a href="{{ route('post.delete', ['id' => $post->id]) }}">Trash</a></td>
                         </tr>                
                     @endforeach
