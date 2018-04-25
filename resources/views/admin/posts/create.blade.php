@@ -46,7 +46,7 @@
                     <textarea name="content" id="contnet" cols="5" rows="5" class="form-control"></textarea>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-success">Submit</button>
+                    <button type="submit" class="btn btn-success">Add Post</button>
                 </div>
             </form>
         </div>

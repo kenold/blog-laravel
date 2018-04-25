@@ -15,7 +15,7 @@
                     <input type="text" name="tag" class="form-control">
                 </div>                
                 <div class="form-group">
-                    <button type="submit" class="btn btn-success">Submit</button>
+                    <button type="submit" class="btn btn-success">Add Tag</button>
                 </div>
             </form>
         </div>
