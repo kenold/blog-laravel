@@ -28,6 +28,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     Route::get('users', 'UserController@index')->name('users');
     Route::get('user/create', 'UserController@create')->name('user.create');
     Route::post('user/store', 'UserController@store')->name('user.store');
+    Route::get('user/admin/{id}', 'UserController@admin')->name('user.admin');
+    Route::get('user/revoke/{id}', 'UserController@revoke')->name('user.revoke');
     
 
     // Posts Routes
