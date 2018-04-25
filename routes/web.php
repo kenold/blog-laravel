@@ -28,9 +28,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     Route::get('users', 'UserController@index')->name('users');
     Route::get('user/create', 'UserController@create')->name('user.create');
     Route::post('user/store', 'UserController@store')->name('user.store');
+    Route::get('user/delete/{id}', 'UserController@destroy')->name('user.delete');
 
     // Profiles
-    Route::get('user/profile', 'ProfileController@index')->name('user.profile');
+    Route::get('user/profile', 'ProfileController@index')->name('user.profile');    
     
     // not passing {id} because we can get it from auth
     Route::post('user/profile/update', 'ProfileController@update')->name('user.profile.update');
