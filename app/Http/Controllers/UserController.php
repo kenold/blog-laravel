@@ -106,7 +106,15 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+
+        $user->profile->delete();
+        
+        $user->delete();
+
+        Session::flash('success', 'Profile deleted!');
+
+        return redirect()->back();
     }
 
     public function admin($id) {
