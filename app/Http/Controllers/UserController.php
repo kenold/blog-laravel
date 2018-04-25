@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Profile;
+use Session;
 
 class UserController extends Controller
 {
@@ -50,7 +51,8 @@ class UserController extends Controller
         ]);
 
         $profile = Profile::create([
-            'user_id' => $user->id
+            'user_id' => $user->id,
+            'avatar' => 'uploads/avatars/avatar.jpg'
         ]);
 
         $request->session()->flash('success', 'User created!');
@@ -101,5 +103,29 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function admin($id) {
+        $user = User::find($id);
+
+        $user->admin = 1;
+
+        $user->save();
+
+        Session::flash('success', 'Permisison changed successfully!');
+
+        return redirect()->back();
+    }
+
+    public function revoke($id) {
+        $user = User::find($id);
+
+        $user->admin = 0;
+
+        $user->save();
+
+        Session::flash('success', 'Permisison changed successfully!');
+
+        return redirect()->back();
     }
 }
