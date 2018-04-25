@@ -12,7 +12,7 @@
 */
 
 Route::get('/test', function(){
-    return App\Post::find(1)->tags;
+    return App\User::find(1)->profile;
 });
 Route::get('/', function () {
     return view('welcome');
@@ -24,11 +24,17 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 
     Route::get('/home', 'HomeController@index')->name('home');
 
+    // Users Routes using Laravel 5.6 named routes
+    Route::get('users', 'UserController@index')->name('users');
+    Route::get('user/create', 'UserController@create')->name('user.create');
+    Route::post('user/store', 'UserController@store')->name('user.store');
+    
+
     // Posts Routes
     Route::get('/posts', [
         'uses' => 'PostController@index',
         'as' => 'posts'
-    ]);  
+    ]); 
 
     // create and store a post
     Route::get('/post/create', [
