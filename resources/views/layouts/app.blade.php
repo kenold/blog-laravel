@@ -74,13 +74,16 @@
                     <div class="col-lg-4">
                         <ul class="list-group">
                             <li class="list-group-item"><a href="{{ route('home') }}">Home</a></li>
+                            <li class="list-group-item"><strong>USERS</strong></li>
+                            <li class="list-group-item"><a href="{{ route('users') }}">All Users</a></li>
+                            <li class="list-group-item"><a href="{{ route('user.create') }}">New User</a></li>
                             <li class="list-group-item"><strong>POSTS</strong></li>
                             <li class="list-group-item"><a href="{{ route('posts') }}">All Posts</a></li>
-                            <li class="list-group-item"><a href="{{ route('post.create') }}">Create a New Post</a></li>
+                            <li class="list-group-item"><a href="{{ route('post.create') }}">New Post</a></li>
                             <li class="list-group-item"><a href="{{ route('posts.trashed') }}">Trashed Posts</a></li>
                             <li class="list-group-item"><strong>CATEGORIES</strong></li>
                             <li class="list-group-item"><a href="{{ route('categories') }}">All Categories</a></li>
-                            <li class="list-group-item"><a href="{{ route('category.create') }}">Create new category</a></li>
+                            <li class="list-group-item"><a href="{{ route('category.create') }}">New Category</a></li>
                             <li class="list-group-item"><strong>TAGS</strong></li>
                             <li class="list-group-item"><a href="{{ route('tags') }}">All Tags</a></li>
                             <li class="list-group-item"><a href="{{ route('tag.create') }}">Create new tag</a></li>                                                       
