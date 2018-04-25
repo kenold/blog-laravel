@@ -79,6 +79,7 @@
                                 <li class="list-group-item"><a href="{{ route('users') }}">All Users</a></li>
                                 <li class="list-group-item"><a href="{{ route('user.create') }}">New User</a></li>
                             @endif
+                            <li class="list-group-item"><a href="{{ route('user.profile') }}">My Profile</a></li>
                             <li class="list-group-item"><strong>POSTS</strong></li>
                             <li class="list-group-item"><a href="{{ route('posts') }}">All Posts</a></li>
                             <li class="list-group-item"><a href="{{ route('post.create') }}">New Post</a></li>
