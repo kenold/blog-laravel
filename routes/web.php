@@ -11,9 +11,6 @@
 |
 */
 
-Route::get('/test', function(){
-    return App\User::find(1)->profile;
-});
 Route::get('/', function () {
     return view('welcome');
 });
@@ -23,6 +20,10 @@ Auth::routes();
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 
     Route::get('/home', 'HomeController@index')->name('home');
+
+    // Settings
+    Route::get('settings', 'SettingController@index')->name('settings');
+    Route::get('settings/update', 'SettingController@update')->name('settings.update');
 
     // Users Routes using Laravel 5.6 named routes
     Route::get('users', 'UserController@index')->name('users');
