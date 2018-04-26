@@ -87,7 +87,12 @@
                             <li class="list-group-item"><a href="{{ route('category.create') }}">New Category</a></li>
                             <li class="list-group-item"><strong>TAGS</strong></li>
                             <li class="list-group-item"><a href="{{ route('tags') }}">All Tags</a></li>
-                            <li class="list-group-item"><a href="{{ route('tag.create') }}">Create new tag</a></li>                                                       
+                            <li class="list-group-item"><a href="{{ route('tag.create') }}">Create new tag</a></li>  
+
+                            @if(Auth::user()->admin)
+                                <li class="list-group-item"><a href="{{ route('settings') }}">Site Settings</a></li>
+                            @endif
+
                         </ul>
                     </div>
                 @endif
