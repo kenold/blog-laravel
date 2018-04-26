@@ -5,7 +5,7 @@
     @include('admin.includes.error')
 
     <div class="card">
-        <div class="card-header">Create a new tag</div>
+        <div class="card-header">Create a new user</div>
 
         <div class="card-body">
             <form action="{{ route('user.store') }}" method="POST">
