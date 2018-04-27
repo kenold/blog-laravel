@@ -16,6 +16,7 @@ class FrontEndController extends Controller
                     ->with('second_post', Post::orderBy('created_at', 'desc')->skip(1)->take(1)->get()->first())
                     ->with('third_post', Post::orderBy('created_at', 'desc')->skip(2)->take(1)->get()->first())
                     ->with('news', Category::find(4))
-                    ->with('videos', Category::find(2));
+                    ->with('videos', Category::find(2))
+                    ->with('settings', Setting::first());
     }
 }
