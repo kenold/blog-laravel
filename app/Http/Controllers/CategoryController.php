@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Category;
+use App\Category, App\Setting;
 use Session;
 
 class CategoryController extends Controller
@@ -61,7 +61,12 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $category = Category::find($id);
+
+        return view('frontend.categories.show')->with('category', $category)
+                                ->with('title', $category->name)
+                                ->with('settings', Setting::first())
+                                ->with('categories', Category::take(5)->get());
     }
 
     /**
@@ -74,7 +79,8 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
 
-        return view('admin.categories.edit')->with('category', $category);
+        return view('admin.categories.edit')->with('category', $category)
+                                             ->with('tags', Tag::all());
     }
 
     /**

@@ -15,7 +15,7 @@
                 <article class="hentry post post-standard-details">
 
                     <div class="post-thumb">
-                        <img src="{{ $post->featured }}" alt="{{ $post->title }}">
+                        <img src="{{ asset($post->featured) }}" alt="{{ $post->title }}">
                     </div>
 
                     <div class="post__content">
@@ -44,7 +44,7 @@
 
                             <span class="category">
                                 <i class="seoicon-tags"></i>
-                                <a href="#">{{ $post->category->name }}</a>                                
+                                <a href="{{ route('category.show', ['id' => $post->category->id]) }}">{{ $post->category->name }}</a>                                
                             </span>
 
                         </div>
@@ -120,50 +120,7 @@
                     </div>
                 </div>
 
-                <div class="pagination-arrow">
-
-                    @if($prev)
-                        <a href="{{ route('post.single', ['slug' => $prev->slug]) }}" class="btn-next-wrap">
-                            <div class="btn-content">
-                                <div class="btn-content-title">Next Post</div>
-                                <p class="btn-content-subtitle">{{ $prev->title }}</p>
-                            </div>
-                            <svg class="btn-next">
-                                <use xlink:href="#arrow-right"></use>
-                            </svg>
-                        </a>
-                    @endif
-                    
-                    @if($next)
-                        <a href="{{ route('post.single', ['slug' => $next->slug]) }}" class="btn-prev-wrap">
-                            <svg class="btn-prev">
-                                <use xlink:href="#arrow-left"></use>
-                            </svg>
-                            <div class="btn-content">
-                                <div class="btn-content-title">Previous Post</div>
-                                <p class="btn-content-subtitle">{{ $next->title }}</p>
-                            </div>
-                        </a>
-                    @endif                    
-                </div>
-
-                <div class="comments">
-
-                    <div class="heading text-center">
-                        <h4 class="h1 heading-title">Comments</h4>
-                        <div class="heading-line">
-                            <span class="short-line"></span>
-                            <span class="long-line"></span>
-                        </div>
-                    </div>
-
-                    @include('frontend.includes.disqus')
-
-                </div>
-
-                <div class="row">
-
-                </div>
+                
 
 
             </div>

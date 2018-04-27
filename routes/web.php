@@ -14,7 +14,10 @@
 Route::get('/', 'FrontEndController@index')->name('index');
 
 // Frontend
-    Route::get('/post/{slug}', 'FrontEndController@singlePost')->name('post.single');
+Route::get('/post/{slug}', 'FrontEndController@singlePost')->name('post.single');
+
+// Categories
+Route::get('category/{id}', 'CategoryController@show')->name('category.show');
 
 Auth::routes();
 
