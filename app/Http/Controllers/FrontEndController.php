@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Setting, App\Category, App\Post, DB;
+use App\Setting, App\Category, App\Post, DB, App\Tag;
 
 class FrontEndController extends Controller
 {
@@ -32,6 +32,7 @@ class FrontEndController extends Controller
                                     ->with('categories', Category::take(5)->get())
                                     ->with('settings', Setting::first())
                                     ->with('next', Post::find($next_id))
-                                    ->with('prev', Post::find($prev_id));
+                                    ->with('prev', Post::find($prev_id))
+                                    ->with('tags', Tag::all());
     }
 }
