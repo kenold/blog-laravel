@@ -68,7 +68,7 @@
                             <div class="post__content-info">
 
                                     <h2 class="post__title entry-title ">
-                                        <a href="15_blog_details.html">{{ $featured_post->title }}</a>
+                                        <a href="{{ route('post.single', ['slug' => $featured_post->slug]) }}">{{ $featured_post->title }}</a>
                                     </h2>
 
                                     <div class="post-additional-info">

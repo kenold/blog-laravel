@@ -13,8 +13,12 @@
 
 Route::get('/', 'FrontEndController@index')->name('index');
 
+// Frontend
+    Route::get('/post/{slug}', 'FrontEndController@singlePost')->name('post.single');
+
 Auth::routes();
 
+// ADMIN GROUP
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 
     Route::get('/home', 'HomeController@index')->name('home');
@@ -152,6 +156,5 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     Route::get('/tag/delete/{id}', [
         'uses' => 'TagController@destroy',
         'as' => 'tag.delete'
-    ]);
-    
+    ]);    
 });
